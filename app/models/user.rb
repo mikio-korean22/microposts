@@ -36,13 +36,4 @@ class User < ApplicationRecord
       self.favorites.find_or_create_by(micropost_id: other_micropost.id)
     end
   end
-  
-  def unfavorite(other_micropost)
-    favorite = self.favorites.find_by(micropost_id: other_micropost.id)
-    favorite.destroy if favorite
-  end
-  
-  def favoriting?(other_micropost)
-    self.favoritings.include?(other_micropost)
-  end
 end
